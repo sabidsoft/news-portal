@@ -12,21 +12,22 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main/>,
+        errorElement: <p>404 Page not found</p>,
         children: [
             {
                 path: '/',
                 element: <Home/>,
-                loader: () => fetch('http://localhost:5000/news')
+                loader: () => fetch('https://news-portal-server-peach.vercel.app/news')
             },
             {
                 path: '/category/:id',
                 element: <Category/>,
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({params}) => fetch(`https://news-portal-server-peach.vercel.app/category/${params.id}`)
             },
             {
                 path: '/news/:id',
                 element: <PrivateRoute><News/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({params}) => fetch(`https://news-portal-server-peach.vercel.app/news/${params.id}`)
             },
             {
                 path: '/login',
